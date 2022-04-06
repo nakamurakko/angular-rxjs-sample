@@ -14,13 +14,15 @@ import { AppComponent } from './app.component';
 import { DistinctSampleComponent } from './distinct-sample/distinct-sample.component';
 import { FilterSampleComponent } from './filter-sample/filter-sample.component';
 import { IifSampleComponent } from './iif-sample/iif-sample.component';
+import { MapSampleComponent } from './map-sample/map-sample.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DistinctSampleComponent,
     FilterSampleComponent,
-    IifSampleComponent
+    IifSampleComponent,
+    MapSampleComponent
   ],
   imports: [
     AppRoutingModule,
