@@ -1,7 +1,8 @@
-import { User } from './../data-types/user';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { defer, Observable, of, Subject } from 'rxjs';
+
+import { Injectable } from '@angular/core';
+
+import { User } from '../data-types/user';
 
 /**
  * サンプルサービス。
@@ -11,14 +12,14 @@ import { defer, Observable, of, Subject } from 'rxjs';
 })
 export class SampleService {
 
-  public constructor(private http: HttpClient) { }
+  public constructor() { }
 
   /**
    * ユーザー情報を取得する。
    *
    * @returns ユーザーの配列。
    */
-   public getUsers(): Observable<Array<User>> {
+  public getUsers(): Observable<Array<User>> {
     //#region
     // let result: Subject<Array<User>> = new Subject<Array<User>>();
 
@@ -99,6 +100,7 @@ export class SampleService {
 
   /**
    * 重複したユーザーデータを取得する。
+   *
    * @returns ユーザーの配列。
    */
   public getDuplicateUsers(): Observable<Array<User>> {
