@@ -1,0 +1,124 @@
+import { filter, from, mergeMap, pipe, toArray } from 'rxjs';
+
+import { Component, OnInit } from '@angular/core';
+
+import { User } from '../data-types/user';
+import { SampleService } from '../services/sample.service';
+
+/**
+ * filter のサンプルクラス。
+ */
+@Component({
+  selector: 'app-filter-sample',
+  templateUrl: './filter-sample.component.html',
+  styleUrls: ['./filter-sample.component.css']
+})
+export class FilterSampleComponent implements OnInit {
+
+  public readonly displayColumns: Array<string> = ['id', 'name'];
+
+  private readonly sampleUsers: Array<User> = new Array<User>(
+    { Id: 1, Name: '太郎' },
+    { Id: 2, Name: '次郎' },
+    { Id: 3, Name: '三郎' },
+    { Id: 4, Name: '四郎' },
+    { Id: 5, Name: '五郎' },
+  );
+
+  public users: Array<User> = new Array<User>();
+
+  public constructor(private sampleService: SampleService) { }
+
+  public ngOnInit(): void {
+  }
+
+  /**
+   * sample1
+   * Observable.pipeにfilterを定義する。
+   */
+  public sample1(): void {
+    this.users = new Array<User>();
+
+    from(this.sampleUsers)
+      .pipe(
+        filter(value => value.Id % 2 === 0)
+      )
+      .subscribe(value => {
+        this.users.push(value);
+      });
+  }
+
+  /**
+   * sample2
+   * rxjs.pipeをインポートすれば、pipeの定義を先に出来る。
+   */
+  public sample2(): void {
+    this.users = new Array<User>();
+
+    const operator = pipe(
+      filter((value: User) => value.Id % 2 === 0)
+    );
+
+    operator(from(this.sampleUsers))
+      .subscribe(value => {
+        this.users.push(value);
+      });
+
+    // 上の記述を定義無しで1まとめにした場合。
+    pipe(
+      filter((value: User) => value.Id % 2 === 0)
+    )(from(this.sampleUsers))
+      .subscribe(value => {
+        this.users.push(value);
+      });
+  }
+
+  /**
+   * sample3
+   */
+  public sample3(): void {
+    from(this.sampleUsers)
+      .pipe(
+        filter(value => value.Id % 2 === 0),
+        toArray()
+      )
+      .subscribe(value => {
+        this.users = value;
+      });
+  }
+
+  /**
+   * sample4
+   * subscribeで受け取った配列をfromで再度処理する。
+   */
+  public sample4(): void {
+    this.sampleService.getUsers()
+      .subscribe(value => {
+        from(value)
+          .pipe(
+            filter(value => value.Id % 2 === 0),
+            toArray()
+          )
+          .subscribe(value => {
+            this.users = value;
+          });
+      });
+  }
+
+  /**
+   * sample5
+   * mergeMapで変換→filterでフィルター→toArrayで再度配列化
+   */
+  public sample5(): void {
+    this.sampleService.getUsers()
+      .pipe(
+        mergeMap(value => value),
+        filter(value => value.Id % 2 === 0),
+        toArray()
+      )
+      .subscribe(value => {
+        this.users = value;
+      });
+  }
+
+}

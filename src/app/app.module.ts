@@ -9,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DistinctSampleComponent } from './distinct-sample/distinct-sample.component';
+import { FilterSampleComponent } from './filter-sample/filter-sample.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DistinctSampleComponent
+    DistinctSampleComponent,
+    FilterSampleComponent
   ],
   imports: [
     AppRoutingModule,
