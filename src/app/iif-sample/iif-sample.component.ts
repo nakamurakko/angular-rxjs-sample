@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { SampleService } from '../services/sample.service';
 
+/**
+ * iif のサンプルクラス。
+ */
 @Component({
   selector: 'app-iif-sample',
   templateUrl: './iif-sample.component.html',
