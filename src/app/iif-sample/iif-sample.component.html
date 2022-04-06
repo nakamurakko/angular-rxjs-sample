@@ -1,0 +1,17 @@
+<p>iif-sample works!</p>
+
+<div>
+  <mat-radio-group [(ngModel)]="isSelected">
+    <mat-radio-button [value]="true">フィルターする。</mat-radio-button>
+    <mat-radio-button [value]="false">しない</mat-radio-button>
+  </mat-radio-group>
+
+  <button mat-raised-button
+          (click)="onClick()">実行</button>
+</div>
+
+<mat-form-field>
+  <mat-label>Response Data</mat-label>
+  <textarea matInput
+            [ngModel]="responseData"></textarea>
+</mat-form-field>
