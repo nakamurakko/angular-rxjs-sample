@@ -30,10 +30,10 @@ export class MapSampleComponent implements OnInit {
   public onClick(): void {
     this.sampleService.getUsers()
       .pipe(
-        mergeMap(value => value),
-        map(value => {
-          value.Name = '田中' + value.Name;
-          return value;
+        mergeMap(x => x),
+        map(x => {
+          x.Name = '田中' + x.Name;
+          return x;
         }),
         toArray()
       )

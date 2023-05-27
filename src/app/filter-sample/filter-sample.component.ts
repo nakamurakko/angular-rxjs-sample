@@ -41,7 +41,7 @@ export class FilterSampleComponent implements OnInit {
 
     from(this.sampleUsers)
       .pipe(
-        filter(value => value.Id % 2 === 0)
+        filter(x => x.Id % 2 === 0)
       )
       .subscribe(
         value => {
@@ -57,7 +57,7 @@ export class FilterSampleComponent implements OnInit {
     this.users = new Array<User>();
 
     const operator = pipe(
-      filter((value: User) => value.Id % 2 === 0)
+      filter((x: User) => x.Id % 2 === 0)
     );
 
     operator(from(this.sampleUsers))
@@ -68,7 +68,7 @@ export class FilterSampleComponent implements OnInit {
 
     // 上の記述を定義無しで1まとめにした場合。
     pipe(
-      filter((value: User) => value.Id % 2 === 0)
+      filter((x: User) => x.Id % 2 === 0)
     )(from(this.sampleUsers))
       .subscribe(
         value => {
@@ -82,7 +82,7 @@ export class FilterSampleComponent implements OnInit {
   public sample3(): void {
     from(this.sampleUsers)
       .pipe(
-        filter(value => value.Id % 2 === 0),
+        filter(x => x.Id % 2 === 0),
         toArray()
       )
       .subscribe(
@@ -99,7 +99,7 @@ export class FilterSampleComponent implements OnInit {
     this.sampleService.getUsers()
       .pipe(
         mergeMap(x => x),
-        filter(value => value.Id % 2 === 0),
+        filter(x => x.Id % 2 === 0),
         toArray()
       )
       .subscribe(

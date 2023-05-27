@@ -30,7 +30,7 @@ export class DistinctSampleComponent implements OnInit {
   public onClick(): void {
     this.sampleService.getDuplicateUsers()
       .pipe(
-        mergeMap(value => value),
+        mergeMap(x => x),
         distinct(x => x.Id),
         toArray()
       )

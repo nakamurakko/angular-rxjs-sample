@@ -30,7 +30,7 @@ export class IifSampleComponent implements OnInit {
       () => this.isSelected,
       this.sampleService.getUsersLikeFrom()
         .pipe(
-          filter(value => value.Id % 2 === 0),
+          filter(x => x.Id % 2 === 0),
           toArray()
         ),
       this.sampleService.getUsers()
