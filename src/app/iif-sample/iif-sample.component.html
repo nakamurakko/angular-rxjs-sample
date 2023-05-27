@@ -10,8 +10,10 @@
           (click)="onClick()">実行</button>
 </div>
 
-<mat-form-field>
+<mat-form-field class="textarea-width-stretch">
   <mat-label>Response Data</mat-label>
   <textarea matInput
+            rows="10"
+            title="Response Data"
             [ngModel]="responseData"></textarea>
 </mat-form-field>
