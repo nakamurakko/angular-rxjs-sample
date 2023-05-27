@@ -31,15 +31,16 @@ export class MapSampleComponent implements OnInit {
     this.sampleService.getUsers()
       .pipe(
         mergeMap(value => value),
-        map<User, User>(value => {
+        map(value => {
           value.Name = '田中' + value.Name;
           return value;
         }),
         toArray()
       )
-      .subscribe(value => {
-        this.users = value;
-      });
+      .subscribe(
+        value => {
+          this.users = value;
+        });
   }
 
 }

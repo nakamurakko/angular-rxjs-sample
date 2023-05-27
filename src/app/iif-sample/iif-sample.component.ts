@@ -26,10 +26,6 @@ export class IifSampleComponent implements OnInit {
    * onClick
    */
   public onClick(): void {
-    // forkJoin(
-    //   iif(() => this.isSelected, of([]), of([]))
-    // ).subscribe();
-
     iif(
       () => this.isSelected,
       this.sampleService.getUsersLikeFrom()
@@ -39,9 +35,10 @@ export class IifSampleComponent implements OnInit {
         ),
       this.sampleService.getUsers()
     )
-      .subscribe(response => {
-        this.responseData = JSON.stringify(response);
-      });
+      .subscribe(
+        value => {
+          this.responseData = JSON.stringify(value);
+        });
   }
 
 }

@@ -104,7 +104,7 @@ export class SampleService {
    * @returns ユーザーの配列。
    */
   public getDuplicateUsers(): Observable<Array<User>> {
-    return defer<Observable<Array<User>>>(() => {
+    return defer(() => {
       const users: Array<User> = new Array<User>(
         { Id: 1, Name: '太郎' },
         { Id: 2, Name: '次郎' },

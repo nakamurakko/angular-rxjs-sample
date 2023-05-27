@@ -34,9 +34,10 @@ export class DistinctSampleComponent implements OnInit {
         distinct(x => x.Id),
         toArray()
       )
-      .subscribe(value => {
-        this.users = value;
-      });
+      .subscribe(
+        value => {
+          this.users = value;
+        });
   }
 
 }
