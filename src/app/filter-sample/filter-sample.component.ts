@@ -93,32 +93,12 @@ export class FilterSampleComponent implements OnInit {
 
   /**
    * sample4
-   * subscribeで受け取った配列をfromで再度処理する。
+   * mergeMap → filter → toArray で再度配列化
    */
   public sample4(): void {
     this.sampleService.getUsers()
-      .subscribe(
-        value => {
-          from(value)
-            .pipe(
-              filter(value => value.Id % 2 === 0),
-              toArray()
-            )
-            .subscribe(
-              value => {
-                this.users = value;
-              });
-        });
-  }
-
-  /**
-   * sample5
-   * mergeMapで変換→filterでフィルター→toArrayで再度配列化
-   */
-  public sample5(): void {
-    this.sampleService.getUsers()
       .pipe(
-        mergeMap(value => value),
+        mergeMap(x => x),
         filter(value => value.Id % 2 === 0),
         toArray()
       )
