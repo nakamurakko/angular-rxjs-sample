@@ -1,0 +1,81 @@
+<h2>defer-and-from-sample works!</h2>
+
+<div>
+  <button mat-raised-button
+          (click)="onDeferClick()">defer 実行</button>
+  <table>
+    <thead>
+      <th>
+      </th>
+      <th>
+        <label>実行結果</label>
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>開始日時</label>
+        </td>
+        <td>
+          <label>{{deferStartTime}}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>終了日時</label>
+        </td>
+        <td>
+          <label>{{deferEndTime}}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>終了日時(const 定義メソッドを使用)</label>
+        </td>
+        <td>
+          <label>{{deferEndTimeWithConst}}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button mat-raised-button
+          (click)="onFromClick()">from 実行</button>
+  <table>
+    <thead>
+      <th>
+      </th>
+      <th>
+        <label>実行結果</label>
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>開始日時</label>
+        </td>
+        <td>
+          <label>{{fromStartTime}}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>終了日時</label>
+        </td>
+        <td>
+          <label>{{fromEndTime}}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>終了日時(const 定義メソッドを使用)</label>
+        </td>
+        <td>
+          <label>{{fromEndTimeWithConst}}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
