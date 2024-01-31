@@ -18,7 +18,7 @@ export class DeferAndFromSampleComponent {
   public deferEndTime: string = '';
   public deferEndTimeWithConst: string = '';
 
-  public fromStartTime: string = ' ';
+  public fromStartTime: string = '';
   public fromEndTime: string = '';
   public fromEndTimeWithConst: string = '';
 

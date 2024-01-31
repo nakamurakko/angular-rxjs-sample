@@ -3,79 +3,55 @@
 <div>
   <button mat-raised-button
           (click)="onDeferClick()">defer 実行</button>
-  <table>
-    <thead>
-      <th>
-      </th>
-      <th>
-        <label>実行結果</label>
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>開始日時</label>
-        </td>
-        <td>
-          <label>{{deferStartTime}}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>終了日時</label>
-        </td>
-        <td>
-          <label>{{deferEndTime}}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>終了日時(const 定義メソッドを使用)</label>
-        </td>
-        <td>
-          <label>{{deferEndTimeWithConst}}</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>開始日時</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="開始日時"
+             [value]="deferStartTime" />
+    </mat-form-field>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>終了日時</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="終了日時"
+             [value]="deferEndTime" />
+    </mat-form-field>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>終了日時(const 定義メソッドを使用)</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="終了日時(const 定義メソッドを使用)"
+             [value]="deferEndTimeWithConst" />
+    </mat-form-field>
+  </div>
 </div>
 
 <div>
   <button mat-raised-button
           (click)="onFromClick()">from 実行</button>
-  <table>
-    <thead>
-      <th>
-      </th>
-      <th>
-        <label>実行結果</label>
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>開始日時</label>
-        </td>
-        <td>
-          <label>{{fromStartTime}}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>終了日時</label>
-        </td>
-        <td>
-          <label>{{fromEndTime}}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>終了日時(const 定義メソッドを使用)</label>
-        </td>
-        <td>
-          <label>{{fromEndTimeWithConst}}</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>開始日時</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="開始日時"
+             [value]="fromStartTime" />
+    </mat-form-field>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>終了日時</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="終了日時"
+             [value]="fromEndTime" />
+    </mat-form-field>
+    <mat-form-field class="form-field-width-stretch">
+      <mat-label>終了日時(const 定義メソッドを使用)</mat-label>
+      <input matInput
+             disabled="true"
+             placeholder="終了日時(const 定義メソッドを使用)"
+             [value]="fromEndTimeWithConst" />
+    </mat-form-field>
+  </div>
 </div>
