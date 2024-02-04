@@ -1,6 +1,6 @@
 import { filter, from, mergeMap, pipe, toArray } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -13,7 +13,7 @@ import { SampleService } from '../services/sample.service';
   templateUrl: './filter-sample.component.html',
   styleUrls: ['./filter-sample.component.css']
 })
-export class FilterSampleComponent implements OnInit {
+export class FilterSampleComponent {
 
   public readonly displayColumns: Array<string> = ['id', 'name'];
 
@@ -28,9 +28,6 @@ export class FilterSampleComponent implements OnInit {
   public users: Array<User> = new Array<User>();
 
   public constructor(private sampleService: SampleService) { }
-
-  public ngOnInit(): void {
-  }
 
   /**
    * sample1

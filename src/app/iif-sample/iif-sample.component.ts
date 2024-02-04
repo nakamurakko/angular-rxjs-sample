@@ -1,6 +1,6 @@
 import { filter, iif, toArray } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SampleService } from '../services/sample.service';
 
@@ -12,15 +12,12 @@ import { SampleService } from '../services/sample.service';
   templateUrl: './iif-sample.component.html',
   styleUrls: ['./iif-sample.component.css']
 })
-export class IifSampleComponent implements OnInit {
+export class IifSampleComponent {
 
   public isSelected: boolean = false;
   public responseData: string = '';
 
   public constructor(private sampleService: SampleService) { }
-
-  public ngOnInit(): void {
-  }
 
   /**
    * onClick

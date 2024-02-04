@@ -1,6 +1,6 @@
 import { distinct, mergeMap, toArray } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -13,16 +13,13 @@ import { SampleService } from '../services/sample.service';
   templateUrl: './distinct-sample.component.html',
   styleUrls: ['./distinct-sample.component.css']
 })
-export class DistinctSampleComponent implements OnInit {
+export class DistinctSampleComponent {
 
   public readonly displayColumns: Array<string> = ['id', 'name'];
 
   public users: Array<User> = new Array<User>();
 
   public constructor(private sampleService: SampleService) { }
-
-  public ngOnInit(): void {
-  }
 
   /**
    * onClick

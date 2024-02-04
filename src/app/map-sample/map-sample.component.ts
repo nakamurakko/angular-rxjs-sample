@@ -1,6 +1,6 @@
 import { map, mergeMap, toArray } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -13,16 +13,13 @@ import { SampleService } from '../services/sample.service';
   templateUrl: './map-sample.component.html',
   styleUrls: ['./map-sample.component.css']
 })
-export class MapSampleComponent implements OnInit {
+export class MapSampleComponent {
 
   public readonly displayColumns: Array<string> = ['id', 'name'];
 
   public users: Array<User> = new Array<User>();
 
   public constructor(private sampleService: SampleService) { }
-
-  public ngOnInit(): void {
-  }
 
   /**
    * onClick
