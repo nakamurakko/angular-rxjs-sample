@@ -1,6 +1,9 @@
 import { filter, from, mergeMap, pipe, toArray } from 'rxjs';
 
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -10,8 +13,14 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-filter-sample',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatTableModule
+  ],
   templateUrl: './filter-sample.component.html',
-  styleUrls: ['./filter-sample.component.css']
+  styleUrl: './filter-sample.component.css'
 })
 export class FilterSampleComponent {
 
@@ -40,10 +49,9 @@ export class FilterSampleComponent {
       .pipe(
         filter(x => x.Id % 2 === 0)
       )
-      .subscribe(
-        value => {
-          this.users.push(value);
-        });
+      .subscribe(value => {
+        this.users.push(value);
+      });
   }
 
   /**
@@ -58,19 +66,17 @@ export class FilterSampleComponent {
     );
 
     operator(from(this.sampleUsers))
-      .subscribe(
-        value => {
-          this.users.push(value);
-        });
+      .subscribe(value => {
+        this.users.push(value);
+      });
 
     // 上の記述を定義無しで1まとめにした場合。
     pipe(
       filter((x: User) => x.Id % 2 === 0)
     )(from(this.sampleUsers))
-      .subscribe(
-        value => {
-          this.users.push(value);
-        });
+      .subscribe(value => {
+        this.users.push(value);
+      });
   }
 
   /**
@@ -82,10 +88,9 @@ export class FilterSampleComponent {
         filter(x => x.Id % 2 === 0),
         toArray()
       )
-      .subscribe(
-        value => {
-          this.users = value;
-        });
+      .subscribe(value => {
+        this.users = value;
+      });
   }
 
   /**
@@ -99,10 +104,9 @@ export class FilterSampleComponent {
         filter(x => x.Id % 2 === 0),
         toArray()
       )
-      .subscribe(
-        value => {
-          this.users = value;
-        });
+      .subscribe(value => {
+        this.users = value;
+      });
   }
 
 }

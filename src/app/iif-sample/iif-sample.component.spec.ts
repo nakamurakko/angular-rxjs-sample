@@ -8,12 +8,10 @@ describe('IifSampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IifSampleComponent ]
+      imports: [IifSampleComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(IifSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

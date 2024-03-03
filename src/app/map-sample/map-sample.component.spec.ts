@@ -8,12 +8,10 @@ describe('MapSampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapSampleComponent ]
+      imports: [MapSampleComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(MapSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

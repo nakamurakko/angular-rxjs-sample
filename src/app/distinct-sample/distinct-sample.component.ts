@@ -1,6 +1,8 @@
 import { distinct, mergeMap, toArray } from 'rxjs';
 
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -10,8 +12,13 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-distinct-sample',
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatTableModule
+  ],
   templateUrl: './distinct-sample.component.html',
-  styleUrls: ['./distinct-sample.component.css']
+  styleUrl: './distinct-sample.component.css'
 })
 export class DistinctSampleComponent {
 
@@ -31,10 +38,9 @@ export class DistinctSampleComponent {
         distinct(x => x.Id),
         toArray()
       )
-      .subscribe(
-        value => {
-          this.users = value;
-        });
+      .subscribe(value => {
+        this.users = value;
+      });
   }
 
 }

@@ -1,6 +1,11 @@
 import { filter, iif, toArray } from 'rxjs';
 
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { SampleService } from '../services/sample.service';
 
@@ -9,8 +14,16 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-iif-sample',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule
+  ],
   templateUrl: './iif-sample.component.html',
-  styleUrls: ['./iif-sample.component.css']
+  styleUrl: './iif-sample.component.css'
 })
 export class IifSampleComponent {
 
@@ -32,10 +45,9 @@ export class IifSampleComponent {
         ),
       this.sampleService.getUsers()
     )
-      .subscribe(
-        value => {
-          this.responseData = JSON.stringify(value);
-        });
+      .subscribe(value => {
+        this.responseData = JSON.stringify(value);
+      });
   }
 
 }

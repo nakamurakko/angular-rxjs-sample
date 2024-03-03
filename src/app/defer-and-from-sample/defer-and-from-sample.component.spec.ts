@@ -10,8 +10,8 @@ describe('DeferAndFromSampleComponent', () => {
     await TestBed.configureTestingModule({
       imports: [DeferAndFromSampleComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(DeferAndFromSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

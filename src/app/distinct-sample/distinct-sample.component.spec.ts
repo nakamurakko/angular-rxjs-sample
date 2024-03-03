@@ -8,12 +8,10 @@ describe('DistinctSampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DistinctSampleComponent ]
+      imports: [DistinctSampleComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(DistinctSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

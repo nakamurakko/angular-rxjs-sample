@@ -1,6 +1,8 @@
 import { map, mergeMap, toArray } from 'rxjs';
 
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { User } from '../data-types/user';
 import { SampleService } from '../services/sample.service';
@@ -10,8 +12,13 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-map-sample',
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatTableModule
+  ],
   templateUrl: './map-sample.component.html',
-  styleUrls: ['./map-sample.component.css']
+  styleUrl: './map-sample.component.css'
 })
 export class MapSampleComponent {
 
@@ -34,10 +41,9 @@ export class MapSampleComponent {
         }),
         toArray()
       )
-      .subscribe(
-        value => {
-          this.users = value;
-        });
+      .subscribe(value => {
+        this.users = value;
+      });
   }
 
 }
