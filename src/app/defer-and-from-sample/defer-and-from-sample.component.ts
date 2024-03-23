@@ -63,6 +63,9 @@ export class DeferAndFromSampleComponent {
       });
   }
 
+  /**
+   * from の確認。
+   */
   public onFromClick(): void {
     this.fromStartTime = new Date().toLocaleString();
     this.fromEndTime = '';
