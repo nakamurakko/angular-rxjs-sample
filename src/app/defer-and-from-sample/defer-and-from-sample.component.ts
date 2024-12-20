@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
  */
 @Component({
   selector: 'app-defer-and-from-sample',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatFormFieldModule,

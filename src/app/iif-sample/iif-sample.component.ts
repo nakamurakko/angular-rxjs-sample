@@ -14,7 +14,6 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-iif-sample',
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonModule,

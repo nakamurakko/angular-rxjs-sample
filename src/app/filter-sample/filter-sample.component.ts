@@ -13,7 +13,6 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-filter-sample',
-  standalone: true,
   imports: [
     CommonModule,
     MatButtonModule,

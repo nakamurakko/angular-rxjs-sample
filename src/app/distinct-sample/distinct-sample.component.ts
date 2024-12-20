@@ -12,7 +12,6 @@ import { SampleService } from '../services/sample.service';
  */
 @Component({
   selector: 'app-distinct-sample',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatTableModule
