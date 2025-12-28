@@ -14,7 +14,7 @@ describe('DistinctSampleComponent', () => {
 
     fixture = TestBed.createComponent(DistinctSampleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

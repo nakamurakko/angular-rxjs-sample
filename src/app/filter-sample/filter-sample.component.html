@@ -1,18 +1,18 @@
 <h2>filter-sample works!</h2>
 
 <div>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="sample1()">sample1</button>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="sample2()">sample2</button>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="sample3()">sample3</button>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="sample4()">sample4</button>
 </div>
 
 <table mat-table
-       [dataSource]="users">
+       [dataSource]="users()">
 
   <ng-container matColumnDef={{displayColumns[0]}}>
     <th mat-header-cell

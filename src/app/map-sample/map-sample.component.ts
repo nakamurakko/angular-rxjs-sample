@@ -1,6 +1,6 @@
 import { map, mergeMap, toArray } from 'rxjs';
 
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
@@ -17,15 +17,15 @@ import { SampleService } from '../services/sample.service';
     MatTableModule
   ],
   templateUrl: './map-sample.component.html',
-  styleUrl: './map-sample.component.css'
+  styleUrl: './map-sample.component.css',
 })
 export class MapSampleComponent {
 
-  public readonly displayColumns: Array<string> = ['id', 'name'];
+  private sampleService = inject(SampleService);
 
-  public users: Array<User> = new Array<User>();
+  protected readonly displayColumns: string[] = ['id', 'name'];
 
-  public constructor(private sampleService: SampleService) { }
+  public users = signal<User[]>([]);
 
   /**
    * onClick
@@ -41,7 +41,7 @@ export class MapSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users = value;
+        this.users.set([...value]);
       });
   }
 

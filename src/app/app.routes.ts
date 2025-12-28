@@ -7,7 +7,7 @@ import { IifSampleComponent } from './iif-sample/iif-sample.component';
 import { MapSampleComponent } from './map-sample/map-sample.component';
 
 export const routes: Routes = [
-  { path: 'defer-and-from-sammple', component: DeferAndFromSampleComponent },
+  { path: 'defer-and-from-sample', component: DeferAndFromSampleComponent },
   { path: 'distinct-sample', component: DistinctSampleComponent },
   { path: 'filter-sample', component: FilterSampleComponent },
   { path: 'iif-sample', component: IifSampleComponent },

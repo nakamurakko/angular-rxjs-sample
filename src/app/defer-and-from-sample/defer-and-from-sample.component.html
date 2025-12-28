@@ -1,7 +1,7 @@
 <h2>defer-and-from-sample works!</h2>
 
 <div>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="onDeferClick()">defer 実行</button>
   <div>
     <mat-form-field class="form-field-width-stretch">
@@ -9,27 +9,27 @@
       <input matInput
              disabled="true"
              placeholder="開始日時"
-             [value]="deferStartTime" />
+             [value]="deferStartTime()" />
     </mat-form-field>
     <mat-form-field class="form-field-width-stretch">
       <mat-label>終了日時</mat-label>
       <input matInput
              disabled="true"
              placeholder="終了日時"
-             [value]="deferEndTime" />
+             [value]="deferEndTime()" />
     </mat-form-field>
     <mat-form-field class="form-field-width-stretch">
       <mat-label>終了日時(const 定義メソッドを使用)</mat-label>
       <input matInput
              disabled="true"
              placeholder="終了日時(const 定義メソッドを使用)"
-             [value]="deferEndTimeWithConst" />
+             [value]="deferEndTimeWithConst()" />
     </mat-form-field>
   </div>
 </div>
 
 <div>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="onFromClick()">from 実行</button>
   <div>
     <mat-form-field class="form-field-width-stretch">
@@ -37,21 +37,21 @@
       <input matInput
              disabled="true"
              placeholder="開始日時"
-             [value]="fromStartTime" />
+             [value]="fromStartTime()" />
     </mat-form-field>
     <mat-form-field class="form-field-width-stretch">
       <mat-label>終了日時</mat-label>
       <input matInput
              disabled="true"
              placeholder="終了日時"
-             [value]="fromEndTime" />
+             [value]="fromEndTime()" />
     </mat-form-field>
     <mat-form-field class="form-field-width-stretch">
       <mat-label>終了日時(const 定義メソッドを使用)</mat-label>
       <input matInput
              disabled="true"
              placeholder="終了日時(const 定義メソッドを使用)"
-             [value]="fromEndTimeWithConst" />
+             [value]="fromEndTimeWithConst()" />
     </mat-form-field>
   </div>
 </div>

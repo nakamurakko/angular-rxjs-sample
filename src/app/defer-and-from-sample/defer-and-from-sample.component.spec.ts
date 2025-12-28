@@ -14,7 +14,7 @@ describe('DeferAndFromSampleComponent', () => {
 
     fixture = TestBed.createComponent(DeferAndFromSampleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

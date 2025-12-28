@@ -1,7 +1,7 @@
 import { filter, from, mergeMap, pipe, toArray } from 'rxjs';
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 
@@ -19,37 +19,37 @@ import { SampleService } from '../services/sample.service';
     MatTableModule
   ],
   templateUrl: './filter-sample.component.html',
-  styleUrl: './filter-sample.component.css'
+  styleUrl: './filter-sample.component.css',
 })
 export class FilterSampleComponent {
 
-  public readonly displayColumns: Array<string> = ['id', 'name'];
+  private sampleService = inject(SampleService);
 
-  private readonly sampleUsers: Array<User> = new Array<User>(
+  protected readonly displayColumns: string[] = ['id', 'name'];
+
+  protected readonly sampleUsers: User[] = [
     { Id: 1, Name: '太郎' },
     { Id: 2, Name: '次郎' },
     { Id: 3, Name: '三郎' },
     { Id: 4, Name: '四郎' },
     { Id: 5, Name: '五郎' },
-  );
+  ];
 
-  public users: Array<User> = new Array<User>();
-
-  public constructor(private sampleService: SampleService) { }
+  public users = signal<User[]>([]);
 
   /**
    * sample1
    * Observable.pipeにfilterを定義する。
    */
   public sample1(): void {
-    this.users = new Array<User>();
+    this.users.set([]);
 
     from(this.sampleUsers)
       .pipe(
         filter(x => x.Id % 2 === 0)
       )
       .subscribe(value => {
-        this.users.push(value);
+        this.users.update(x => [...x, value])
       });
   }
 
@@ -58,7 +58,7 @@ export class FilterSampleComponent {
    * rxjs.pipeをインポートすれば、pipeの定義を先に出来る。
    */
   public sample2(): void {
-    this.users = new Array<User>();
+    this.users.set([]);
 
     const operator = pipe(
       filter((x: User) => x.Id % 2 === 0)
@@ -66,7 +66,7 @@ export class FilterSampleComponent {
 
     operator(from(this.sampleUsers))
       .subscribe(value => {
-        this.users.push(value);
+        this.users.update(x => [...x, value]);
       });
 
     // 上の記述を定義無しで1まとめにした場合。
@@ -74,7 +74,7 @@ export class FilterSampleComponent {
       filter((x: User) => x.Id % 2 === 0)
     )(from(this.sampleUsers))
       .subscribe(value => {
-        this.users.push(value);
+        this.users.update(x => [...x, value]);
       });
   }
 
@@ -88,7 +88,7 @@ export class FilterSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users = value;
+        this.users.set([...value]);
       });
   }
 
@@ -104,7 +104,7 @@ export class FilterSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users = value;
+        this.users.set([...value]);
       });
   }
 

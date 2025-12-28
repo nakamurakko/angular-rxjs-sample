@@ -8,29 +8,27 @@ import { User } from '../data-types/user';
  * サンプルサービス。
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SampleService {
-
-  public constructor() { }
 
   /**
    * ユーザー情報を取得する。
    *
    * @returns ユーザーの配列。
    */
-  public getUsers(): Observable<Array<User>> {
+  public getUsers(): Observable<User[]> {
     //#region
-    // let result: Subject<Array<User>> = new Subject<Array<User>>();
+    // const result: Subject<User[]> = new Subject<User[]>();
 
     // setTimeout(() => {
-    //   let users: Array<User> = new Array<User>(
+    //   const users: User[] = [
     //     { Id: 1, Name: '太郎' },
     //     { Id: 2, Name: '次郎' },
     //     { Id: 3, Name: '三郎' },
     //     { Id: 4, Name: '四郎' },
     //     { Id: 5, Name: '五郎' },
-    //   );
+    //   ];
 
     //   result.next(users);
 
@@ -40,36 +38,19 @@ export class SampleService {
     // return result;
     //#endregion
 
-    return defer<Observable<Array<User>>>(() => {
-      const users: Array<User> = new Array<User>(
+    return defer<Observable<User[]>>(() => {
+      const users: User[] = [
         { Id: 1, Name: '太郎' },
         { Id: 2, Name: '次郎' },
         { Id: 3, Name: '三郎' },
         { Id: 4, Name: '四郎' },
         { Id: 5, Name: '五郎' },
-      );
+      ];
 
       return of(users);
     });
 
   }
-
-  //#region getUsers(AspNetCoreSampleから取得する場合)
-  // /**
-  //  * getUsers(AspNetCoreSampleから取得する場合)
-  //  */
-  // public getUsers(): Observable<Array<User>> {
-  //   let result: Subject<Array<User>> = new Subject<Array<User>>();
-
-  //   this.http.get('http://localhost:63093/api/user')
-  //     .subscribe(response => {
-  //       result.next(response as Array<User>);
-  //       result.complete();
-  //     });
-
-  //   return result;
-  // }
-  //#endregion
 
   /**
    * ユーザー情報を取得する。
@@ -80,13 +61,13 @@ export class SampleService {
     const result: Subject<User> = new Subject<User>();
 
     setTimeout(() => {
-      const users: Array<User> = new Array<User>(
+      const users: User[] = [
         { Id: 1, Name: '太郎' },
         { Id: 2, Name: '次郎' },
         { Id: 3, Name: '三郎' },
         { Id: 4, Name: '四郎' },
         { Id: 5, Name: '五郎' },
-      );
+      ];
 
       users.forEach(user => {
         result.next(user);
@@ -103,9 +84,9 @@ export class SampleService {
    *
    * @returns ユーザーの配列。
    */
-  public getDuplicateUsers(): Observable<Array<User>> {
+  public getDuplicateUsers(): Observable<User[]> {
     return defer(() => {
-      const users: Array<User> = new Array<User>(
+      const users: User[] = [
         { Id: 1, Name: '太郎' },
         { Id: 2, Name: '次郎' },
         { Id: 1, Name: '太郎' },
@@ -114,7 +95,7 @@ export class SampleService {
         { Id: 1, Name: '太郎' },
         { Id: 4, Name: '四郎' },
         { Id: 5, Name: '五郎' },
-      );
+      ];
 
       return of(users);
     });

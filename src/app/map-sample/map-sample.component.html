@@ -1,12 +1,12 @@
 <h2>map-sample works!</h2>
 
 <div>
-  <button mat-raised-button
+  <button matButton="elevated"
           (click)="onClick()">表示</button>
 </div>
 
 <table mat-table
-       [dataSource]="users">
+       [dataSource]="users()">
 
   <ng-container matColumnDef={{displayColumns[0]}}>
     <th mat-header-cell

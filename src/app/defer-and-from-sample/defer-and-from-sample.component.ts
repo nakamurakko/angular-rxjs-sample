@@ -1,6 +1,6 @@
 import { defer, delay, from, mergeMap, Observable, of } from 'rxjs';
 
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,31 +16,25 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ],
   templateUrl: './defer-and-from-sample.component.html',
-  styleUrl: './defer-and-from-sample.component.css'
+  styleUrl: './defer-and-from-sample.component.css',
 })
 export class DeferAndFromSampleComponent {
 
-  public deferStartTime: string = '';
-  public deferEndTime: string = '';
-  public deferEndTimeWithConst: string = '';
+  public deferStartTime = signal<string>('');
+  public deferEndTime = signal<string>('');
+  public deferEndTimeWithConst = signal<string>('');
 
-  public fromStartTime: string = '';
-  public fromEndTime: string = '';
-  public fromEndTimeWithConst: string = '';
-
-  /**
-   * コンストラクター。
-   */
-  public constructor() {
-  }
+  public fromStartTime = signal<string>('');
+  public fromEndTime = signal<string>('');
+  public fromEndTimeWithConst = signal<string>('');
 
   /**
    * defer の確認。
    */
   public onDeferClick(): void {
-    this.deferStartTime = new Date().toLocaleString();
-    this.deferEndTime = '';
-    this.deferEndTimeWithConst = '';
+    this.deferStartTime.set(new Date().toLocaleString());
+    this.deferEndTime.set('');
+    this.deferEndTimeWithConst.set('');
 
     // defer を使用して pipe 内で Promise を呼び出す。
     of('')
@@ -49,7 +43,7 @@ export class DeferAndFromSampleComponent {
         mergeMap(() => defer(() => this.getDateByPromise()))
       )
       .subscribe(value => {
-        this.deferEndTime = value.toLocaleString();
+        this.deferEndTime.set(value.toLocaleString());
       });
 
     // defer を使用して外部定義した Promise を呼び出す。
@@ -60,7 +54,7 @@ export class DeferAndFromSampleComponent {
         mergeMap(() => process)
       )
       .subscribe(value => {
-        this.deferEndTimeWithConst = value.toLocaleString();
+        this.deferEndTimeWithConst.set(value.toLocaleString());
       });
   }
 
@@ -68,9 +62,9 @@ export class DeferAndFromSampleComponent {
    * from の確認。
    */
   public onFromClick(): void {
-    this.fromStartTime = new Date().toLocaleString();
-    this.fromEndTime = '';
-    this.fromEndTimeWithConst = '';
+    this.fromStartTime.set(new Date().toLocaleString());
+    this.fromEndTime.set('');
+    this.fromEndTimeWithConst.set('');
 
     // from を使用して pipe 内で Promise を呼び出す。
     of('')
@@ -79,7 +73,7 @@ export class DeferAndFromSampleComponent {
         mergeMap(() => from(this.getDateByPromise()))
       )
       .subscribe(value => {
-        this.fromEndTime = value.toLocaleString();
+        this.fromEndTime.set(value.toLocaleString());
       });
 
     // from を使用して外部定義した Promise を呼び出す。
@@ -91,7 +85,7 @@ export class DeferAndFromSampleComponent {
         mergeMap(() => process)
       )
       .subscribe(value => {
-        this.fromEndTimeWithConst = value.toLocaleString();
+        this.fromEndTimeWithConst.set(value.toLocaleString());
       });
   }
 

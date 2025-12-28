@@ -14,7 +14,7 @@ describe('MapSampleComponent', () => {
 
     fixture = TestBed.createComponent(MapSampleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
