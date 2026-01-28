@@ -41,7 +41,7 @@ export class MapSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users.set([...value]);
+        this.users.set(value);
       });
   }
 

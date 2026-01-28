@@ -38,7 +38,7 @@ export class DistinctSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users.set([...value]);
+        this.users.set(value);
       });
   }
 

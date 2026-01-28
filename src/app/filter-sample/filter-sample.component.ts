@@ -88,7 +88,7 @@ export class FilterSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users.set([...value]);
+        this.users.set(value);
       });
   }
 
@@ -104,7 +104,7 @@ export class FilterSampleComponent {
         toArray()
       )
       .subscribe(value => {
-        this.users.set([...value]);
+        this.users.set(value);
       });
   }
 
